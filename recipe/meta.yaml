@@ -1,7 +1,7 @@
 {% set name = "pymodsecurity" %}
-{% set version = "0.0.3" %}
+{% set version = "0.0.4" %}
 {% set build_number = 0 %}
-{% set hash_value = "fbe09194ea9119229273cb8ab7e02e7e1250802084e6484acab1abfade85b69d" %}
+{% set hash_value = "63a74c1f2fcadf140f03b088cfd3c41233c72dbdc5de4ef3a77ae0ab5c1fb72b" %}
 
 package:
   name: {{ name }}
@@ -15,20 +15,20 @@ build:
   number: {{ build_number }}
   skip: true  # [not linux or py<35]
   script:
-    - CFLAGS="-I$PREFIX/include -L$PREFIX/lib" 
+    - CFLAGS="-I$PREFIX/include -L$PREFIX/lib"
     - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    
+
   host:
     - modsecurity
     - pip
     - python
     - pybind11 >=2.2
-    
+
   run:
     - modsecurity
     - python
@@ -46,6 +46,6 @@ about:
   license_file: LICENSE.txt
 
 extra:
-  recipe-maintainers: 
+  recipe-maintainers:
     - GustavoKatel
     - Davysson0
