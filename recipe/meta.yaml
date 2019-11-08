@@ -1,34 +1,29 @@
-{% set name = "pymodsecurity" %}
 {% set version = "0.0.4" %}
-{% set build_number = 1 %}
-{% set hash_value = "63a74c1f2fcadf140f03b088cfd3c41233c72dbdc5de4ef3a77ae0ab5c1fb72b" %}
 
 package:
-  name: {{ name }}
+  name: pymodsecurity
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ hash_value }}
+  url: https://pypi.io/packages/source/p/pymodsecurity/pymodsecurity-{{ version }}.tar.gz
+  sha256: 63a74c1f2fcadf140f03b088cfd3c41233c72dbdc5de4ef3a77ae0ab5c1fb72b
 
 build:
-  number: {{ build_number }}
+  number: 2
   skip: true  # [not linux or py<35]
   script:
     - CFLAGS="-I$PREFIX/include -L$PREFIX/lib"
-    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+    - "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-
   host:
-    - modsecurity
-    - pip
     - python
+    - pip
+    - modsecurity
     - pybind11 >=2.2
-
   run:
     - modsecurity
     - python
@@ -47,4 +42,3 @@ about:
 extra:
   recipe-maintainers:
     - GustavoKatel
-    - Davysson0
