@@ -27,6 +27,8 @@ requirements:
   run:
     - modsecurity
     - python
+    # remove this pin once the dependencies are rebuilt
+    - icu 58
 
 test:
   imports:
