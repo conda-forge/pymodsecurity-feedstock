@@ -1,4 +1,4 @@
-{% set version = "0.0.4" %}
+{% set version = "0.0.5" %}
 
 package:
   name: pymodsecurity
@@ -6,14 +6,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/p/pymodsecurity/pymodsecurity-{{ version }}.tar.gz
-  sha256: 63a74c1f2fcadf140f03b088cfd3c41233c72dbdc5de4ef3a77ae0ab5c1fb72b
+  sha256: c597d1ba95fad4fcb62a66f82a60119cdf36290c65f1f236db73f8dce7348600
 
 build:
-  number: 2
+  number: 0
   skip: true  # [not linux or py<35]
   script:
     - CFLAGS="-I$PREFIX/include -L$PREFIX/lib"
-    - "{{ PYTHON }} -m pip install . --no-deps -vv"
+    - {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   build:
