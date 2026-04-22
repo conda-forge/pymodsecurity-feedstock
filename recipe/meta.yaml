@@ -9,7 +9,7 @@ source:
   sha256: 63a74c1f2fcadf140f03b088cfd3c41233c72dbdc5de4ef3a77ae0ab5c1fb72b
 
 build:
-  number: 2
+  number: 3
   skip: true  # [not linux or py<35]
   script:
     - CFLAGS="-I$PREFIX/include -L$PREFIX/lib"
